@@ -34,7 +34,7 @@ npm install
 ```
 Einige Symlinks werden benötigt (Cakefile).
 ```
-sudo ln -s /home/<path inside your home folder>/code/Moviedatabase/node_modules/coffee-script/bin/cake /usr/local/bin/cake
+sudo ln -s /home/<path inside your home folder>/Moviedatabase/node_modules/coffee-script/bin/cake /usr/local/bin/cake
 sudo ln -s /home/<path inside your home folder>/Moviedatabase/node_modules/docco/bin/docco /usr/local/bin/docco
 sudo ln -s /home/<path inside your home folder>/Moviedatabase/node_modules/mocha/bin/mocha /usr/local/bin/mocha
 ```
@@ -64,7 +64,7 @@ Kleine Anmerkungen zu Sourcemaps:
  - coffeescript Option -M (inline sourcemaps) ging nicht
 
 ### Dokumentation
-Zwei Beispiele zur Dokumentation: docco unt literate Programming (CoffeeScript)
+Zwei Beispiele zur Dokumentation: [docco](https://jashkenas.github.io/docco/) und literate Programming (CoffeeScript).
 #### docco
 Die Cakefile genertiert mit *cake docs* mittels [docco](https://jashkenas.github.io/docco/) eine Dokumentation, die man sich unter
 ```
