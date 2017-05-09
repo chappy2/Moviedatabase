@@ -60,6 +60,10 @@ cake clean
 ```
 Als Vorlage für die Cakefile diente [dieses Template](http://twilson63.github.io/cakefile-template/).
 ### Sourcemaps
+Sourcemaps werden in die jeweiligen *dist* Ordner generiert:
+- Die [Client Sourcemap](https://github.com/chappy2/Moviedatabase/blob/master/public/dist/clientApp.js.map)
+- Die [Server Sourcemap](https://github.com/chappy2/Moviedatabase/blob/master/dist/app.js.map)
+
 Kleine Anmerkungen zu Sourcemaps:
  - probleme in firefox 53.0.2 (in chrome funktioniert alles)
  - sourcemap angaben passen nicht zum webserver (files liegen in public ordner)
@@ -75,9 +79,9 @@ localhost:5001/clientApp.html
 ```
 anschauen kann (je nach config) und liegt im *docs/* Ordner.
 ### literate Programming
-Unter *public/literateProgramming* ist ein Abbild von *public/src/clientApp.coffee* einmal als .litcoffee und .litcoffee.md. 
+Unter *public/literateProgramming* ist ein Abbild von *public/src/clientApp.coffee* einmal als *.litcoffee* und *.litcoffee.md*. 
 
-Die Datei .litcoffee kann compiliert werden (wie eine .coffee Datei):
+Die Datei *.litcoffee* kann compiliert werden (wie eine *.coffee* Datei):
 ```
 coffee -c clientApp.litcoffee
 ```
