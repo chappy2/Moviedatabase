@@ -15,7 +15,7 @@ Removes unwanted Characters in html id names.
                     """
         input.replace re, ''
 
-## Class *View*#
+## Class *View*
 Base View for *MovieListView*.
 #### log
 short function for logging values
