@@ -2,7 +2,7 @@ Example of literate Programming in CoffeeScript.
 the clientApp.litcoffee will not be compiled via Cakefile. Compile with:
 ``` coffee -c clientApp.litcoffee ```
 
-## *removeCharacters*#
+## *removeCharacters*
 Function in this App Scope (not global, CoffeeScript compiles the application within a JavaScript function scope).
 
 Removes unwanted Characters in html id names.
