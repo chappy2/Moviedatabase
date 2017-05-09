@@ -10,7 +10,7 @@ Installation getestet für Ubuntu ab 14.04.
 ### Konfiguration
 Datei *config/defaultExample.json* kopieren und umbenennen in *default.json*. Je nach Umgebung die Werte anpassen.
 
-#### Nodejs und Dependencies
+### Nodejs und Dependencies
 node js mit nvm installieren. 
 ```
 curl https://raw.githubusercontent.com/creationix/nvm/v0.11.1/install.sh | bash
@@ -47,7 +47,7 @@ Je nach *config/default.json* Einstellung erreichbar unter:
 localhost:5001
 ```
 
-### Cake Befehle:
+## Cake Befehle:
 In der Präsentation wurde Cakefile und Sourcemaps vorgestellt. Hier nochmals eine Übersicht über die implementierten Befehle:
 ```
 cake --map build
@@ -57,22 +57,22 @@ cake test
 cake clean
 ```
 Als Vorlage für die Cakefile diente [dieses Template](http://twilson63.github.io/cakefile-template/).
-#### Sourcemaps
+### Sourcemaps
 Kleine Anmerkungen zu Sourcemaps:
  - probleme in firefox 53.0.2 (in chrome funktioniert alles)
  - sourcemap angaben passen nicht zum webserver (files liegen in public ordner)
  - coffeescript Option -M (inline sourcemaps) ging nicht
 
-### Dokumentation
+## Dokumentation
 Zwei Beispiele zur Dokumentation: [docco](https://jashkenas.github.io/docco/) und literate Programming (CoffeeScript).
-#### docco
+### docco
 Die Cakefile genertiert mit *cake docs* mittels [docco](https://jashkenas.github.io/docco/) eine Dokumentation, die man sich unter
 ```
 localhost:5001/app.html
 localhost:5001/clientApp.html
 ```
 anschauen kann (je nach config) und liegt im *docs/* Ordner.
-#### literate Programming
+### literate Programming
 Unter *public/literateProgramming* ist ein Abbild von *public/src/clientApp.coffee* einmal als .litcoffee und .litcoffee.md. 
 
 Die Datei .litcoffee kann compiliert werden (wie eine .coffee Datei):
