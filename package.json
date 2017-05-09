@@ -20,6 +20,13 @@
     "test": "cake test",
     "start": "cake -m build ;node /dist/app.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chappy2/Moviedatabase.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chappy2/Moviedatabase/issues"
+  },
   "author": "aw, sss",
   "license": "ISC"
 }
