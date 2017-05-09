@@ -358,7 +358,7 @@ unsaved changes to movies will be lost after creating new movies ort sort the co
                 $("#dialog-eidtable-not-saved").dialog "open"
             else
                 @arg(event,@render)
-Init the app    
+## Init the app    
 
     MovieList=new MovieList()
     app=new MovieListView(MovieList)
