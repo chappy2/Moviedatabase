@@ -1,3 +1,5 @@
+# Client of *Moviedatabase*
+Documentation differs from *public/src/clientApp.coffee*. 
 Example of literate Programming in CoffeeScript.
 the clientApp.litcoffee will not be compiled via Cakefile. Compile with:
 ``` coffee -c clientApp.litcoffee ```
@@ -20,7 +22,7 @@ Base View for *MovieListView*.
 
     class View
 #### render
-only logs for demonstrations purpose (parent logging in MovieListView)
+only logs for demonstrations purpose.
 
         render: ->
            @.log "View render called class View"
