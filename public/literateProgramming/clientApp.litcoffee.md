@@ -17,17 +17,17 @@ Removes unwanted Characters in html id names.
 
 ## Class *View*
 Base View for *MovieListView*.
-#### log
-short function for logging values
-parameter <i>value</i> needed
+
+    class View
 #### render
 only logs for demonstrations purpose (parent logging in MovieListView)
 
-
-    class View
         render: ->
            @.log "View render called class View"
-    
+#### log
+short function for logging values
+parameter <i>value</i> needed
+
         log: (value) ->
             console.log value
         
@@ -53,31 +53,23 @@ Functions are only implemented to garantee the same structure of Movieobjects.
      
 ## Class *MovieList*
 *MovieList* uses Localstorage. Complete Collection is loaded into localstorage.
+
+    class MovieList
 #### constructor
  - constructor can be defined for classes
- - function calls without arguments needs () 
+ - function calls without arguments needs ()
 
+
+        constructor: ->
+            @storageName='demomoviesdatabaseCollection'
+            @fetch()
+            @
 #### newMovie
  - generates Id for the new movie from given values
  - adds movie to collection and saves it
  - return true or false if successful (return can be used in CoffeeScript)
 
-#### removeMovie
- - deletes the movie via comprehension
- - All movies remain in collection if id is not the same as the given id
 
-#### updateMovie
-Another example for comprehension. This time it returns the one movie with the same *id* (parameter).
-#### fetch
-Example for ? operator.
-#### sort
-Example for JavaScript Function Scope (classes are compiled to functions in CoffeeScript).
-
-    class MovieList
-        constructor: ->
-            @storageName='demomoviesdatabaseCollection'
-            @fetch()
-            @
         newMovie: (values,callback) ->
             futureId=removeCharacters values.title + values.year
             checkExisting=@getMovie(futureId)
@@ -88,14 +80,25 @@ Example for JavaScript Function Scope (classes are compiled to functions in Coff
             @collection.push elem
             @save(callback)
             true
+#### removeMovie
+ - deletes the movie via comprehension
+ - All movies remain in collection if id is not the same as the given id
+
+
         removeMovie: (ids,callback) ->
             @collection = (movie for movie in @collection when movie.id != ids)
             @save(callback)
+#### getMovie and getCollection
+Getter for all movies or search for one (Anoter Comprehension Example).
+
         getMovie:(ids) -> 
             result=(movie for movie in @collection when movie.id == ids)
             result
         getCollection: ->
             @collection
+#### fetch
+Example for ? operator.
+
         fetch: (callback)-> 
             temp=localStorage[@storageName]
             if not temp?
@@ -104,13 +107,22 @@ Example for JavaScript Function Scope (classes are compiled to functions in Coff
              else 
                 @collection=JSON.parse temp
             callback?()
+#### save
+Collection saved to localstorage (one key only).
+
         save: (callback)->
             localStorage[@storageName]=JSON.stringify @getCollection()
             callback?()
+#### updateMovie
+Another example for comprehension. This time it returns the one movie with the same *id* (parameter).
+
         updateMovie: (id,attribut,value) ->
             movies=@getMovie id
             movies[0].attributes[attribut]=value
             movies[0].id=removeCharacters movies[0].attributes.title+movies[0].attributes.year
+#### sort
+Example for JavaScript Function Scope (classes are compiled to functions in CoffeeScript).
+
         sort: (attribut,sorting)->
             @sorted={attribut,sorting}
             asc=(a,b)-> 
@@ -130,57 +142,17 @@ Example for JavaScript Function Scope (classes are compiled to functions in Coff
             else
                 @collection=@collection.sort(desc)
 
-## Class *MovieList*
-*MovieList* uses localstorage. Complete Collection is loaded and storedi into localstorage.
+## Class *MovieListView*
+*MovieListView* is a child from class *View*. Example for extends keyword.
+
+    class MovieListView extends View
 #### constructor
  - DOM Ids and classes
  - state (sorting)
  - add callback for *fetch*, and *render* when done
  - Example for fat arrow => binding
 
-#### render
- - *render* used as callback function (called after *MovieList* localStorage interactions)
- - it overrides the *render* function of the super class *View*
- - Example for Array Comprehension. For each item in collection the function *renderMovie* is called
- - Example of use of super class *View* function *log*
 
-#### renderSorting
-render the sorting icons
-#### renderMovie
-Example for String Interpolation with #{} and multiline String definition
-#### initXEditableFields
-init jquery ui editable fields
-#### addDeleteEvents
-Example for in Loop (over arrays)
-#### checkInputFields
- - Example of for loop over Object
- - Example for checking empty string
- 
-#### readInputFields
- Example Javascript Ex Nilho Object Creation
-#### createMovie
-check input and create
-#### createOnEnter
-creation of a movie after pressing enter on fsk input field
-#### deleteMovie
-...
-#### saveMovieList
- - id of eidtable data is movie.id_attributKey, value is innerText of v
- - eg <a id="exampleId1997_director" ...>the edited value</a>
-
-#### sort
- - Get attribut name to sort after a id
- - check if this attribut has been sorted before
- - sort collection, keep sorting information and *render*
- - callback invoked here. No localStorage interaktion. Parameter needed, otherwise showDialogSave can't call this function.
-
-#### isDataSaved
- ...
-#### showDialogSave
-unsaved changes to movies will be lost after creating new movies ort sort the collection. this dialog ask if edited values should be saved. @arg is @saveMovieList or @sort.
-    
-
-    class MovieListView extends View
         constructor: (MovieList)->
             @inputDirector='#director'
             @inputFsk= '#fsk'
@@ -225,6 +197,13 @@ unsaved changes to movies will be lost after creating new movies ort sort the co
     
             $.fn.editable.defaults.mode = 'inline'
             @
+#### render
+ - *render* used as callback function (called after *MovieList* localStorage interactions)
+ - it overrides the *render* function of the super class *View*
+ - Example for Array Comprehension. For each item in collection the function *renderMovie* is called
+ - Example of use of super class *View* function *log*
+
+
         render: =>
             @log "render fired"
             trString=(@renderMovie movie for movie in @MovieList.getCollection())
@@ -234,6 +213,9 @@ unsaved changes to movies will be lost after creating new movies ort sort the co
             @initXEditableFields()
             $( "button" ).button()
             @renderSorting()
+#### renderSorting
+render the sorting icons
+
         renderSorting:  ->
             if @sorted[0] != "" and @sorted[1] != ""
                 $(".sort-asc,.sort-desc").each (k, v) =>
@@ -246,6 +228,9 @@ unsaved changes to movies will be lost after creating new movies ort sort the co
                 else
                     iconClass=iconClass+"n"
                 $(@sorted[0]+">span").attr "class",iconClass
+#### renderMovie
+Example for String Interpolation with #{} and multiline String definition
+
         renderMovie: (movie)->
             values= movie.attributes
             """<tr id='#{movie.id}_row'>
@@ -260,6 +245,9 @@ unsaved changes to movies will be lost after creating new movies ort sort the co
                     </button>
                 </form></td>
             </tr>"""
+#### initXEditableFields
+init jquery ui editable fields
+
         initXEditableFields: ->
             $.fn.editable.defaults.mode = 'inline'
             for movie in @MovieList.getCollection()
@@ -268,17 +256,27 @@ unsaved changes to movies will be lost after creating new movies ort sort the co
                 $("#"+movie.id+"_year").editable()
                 $("#"+movie.id+"_runtime").editable()
                 $("#"+movie.id+"_fsk").editable()
+#### addDeleteEvents
+Example for in Loop (over arrays)
+
         addDeleteEvents:  ->
             for movie in @MovieList.getCollection()
                 $("#"+movie.id).on 'click',(event) =>
                     @deleteMovie event,@render 
-            
+#### checkInputFields
+ - Example of for loop over Object
+ - Example for checking empty string
+
+
         checkInputFields: (values)->
             isNotEmpty=true
             for k,v of values
                if not v
                     isNotEmpty=false
             isNotEmpty
+#### readInputFields
+Example Javascript Ex Nilho Object Creation
+
         readInputFields: ->
             values={}
             values.title =$(@inputTitle).val()
@@ -287,6 +285,9 @@ unsaved changes to movies will be lost after creating new movies ort sort the co
             values.runtime =$(@inputRuntime).val()
             values.fsk =$(@inputFsk).val()
             values
+#### createMovie
+check input and create
+
         createMovie: (event,callback) ->
             values=@readInputFields()
             valid=@checkInputFields values
@@ -297,15 +298,30 @@ unsaved changes to movies will be lost after creating new movies ort sort the co
             else
                 $("#dialog-invalid-input").dialog("open")
             @
+#### deleteMovie
+...
+
         deleteMovie:(event,callback) ->
             @MovieList.removeMovie event.currentTarget.id,callback
             @
+#### saveMovieList
+ - id of eidtable data is movie.id_attributKey, value is innerText of v
+ - eg <a id="exampleId1997_director" ...>the edited value</a>
+
+
         saveMovieList: (event,callback)->
             $(@classNotSaved).each (k, v) =>
                 newV=v.id.split "_"
                 @MovieList.updateMovie newV[0],newV[1],v.innerHTML
             @MovieList.save(callback)
             @
+#### sort
+ - Get attribut name to sort after a id
+ - check if this attribut has been sorted before
+ - sort collection, keep sorting information and *render*
+ - callback invoked here. No localStorage interaktion. Parameter needed, otherwise showDialogSave can't call this function.
+
+
         sort: (event,callback) ->
             sorting="asc"
             val=event.currentTarget.id.replace "sort",""
@@ -317,8 +333,14 @@ unsaved changes to movies will be lost after creating new movies ort sort the co
             @sorted=['#'+event.currentTarget.id,"sort-"+sorting]
             callback?()
             @
+#### isDataSaved
+ ...
+
         isDataSaved:->
             $('.editable-unsaved').length <= 0
+#### showDialogSave
+unsaved changes to movies will be lost after creating new movies ort sort the collection. this dialog ask if edited values should be saved. @arg is @saveMovieList or @sort.
+
         showDialogSave: (@arg,event) ->
             if not @isDataSaved()
                 dynamicButton= {
