@@ -32,12 +32,14 @@ Dependencies installieren (*coffee-script, docco, express, mocha, should*):
 ```
 npm install
 ```
+### Symlinks
 Einige Symlinks werden benötigt (Cakefile).
 ```
 sudo ln -s /home/<path inside your home folder>/Moviedatabase/node_modules/coffee-script/bin/cake /usr/local/bin/cake
 sudo ln -s /home/<path inside your home folder>/Moviedatabase/node_modules/docco/bin/docco /usr/local/bin/docco
 sudo ln -s /home/<path inside your home folder>/Moviedatabase/node_modules/mocha/bin/mocha /usr/local/bin/mocha
 ```
+### Server starten
 Moviedatabase dann starten mit 
 ```
 node ./dist/app.js
