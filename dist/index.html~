@@ -17,7 +17,7 @@
   	margin: auto auto;
   }
 input {
-width:100px !important;
+width:60px !important;
 }
 	.demoPage {
 		background-color:#fff;
