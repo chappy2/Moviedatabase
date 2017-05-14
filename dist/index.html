@@ -2,23 +2,23 @@
     
     <head>
         <link href="x-editable/dist/jqueryui-editable/css/jqueryui-editable.css" rel="stylesheet">
-        	<link href="jquery-ui.css" rel="stylesheet">
-        		<style>
+        <link href="jquery-ui.css" rel="stylesheet">
+        <style>
 	body{
 		font-family: "Trebuchet MS", sans-serif;
 		background-color:#cdc3b7;
 	}
-  button {
-  	width: 24px;
-  	height: 24px;
-  }
-  td>form {
-  	width: 80px;
-  	margin: auto auto;
-  }
-input {
-width:100px !important;
-}
+  	button {
+  		width: 24px;
+  		height: 24px;
+  	}
+  	td>form {
+  		width: 80px;
+  		margin: auto auto;
+  	}
+	input {
+		width:100px !important;
+	}
 	.demoPage {
 		background-color:#fff;
 		/*width:1024px;
@@ -82,11 +82,11 @@ width:100px !important;
 		width:100% !important;
 	}
 	.ui-dialog .ui-dialog-buttonset .ui-button {
-    font-size: 10px;
-    width:48% !important;
-    margin:1%;
-    padding:0;
-}
+    		font-size: 10px;
+    		width:48% !important;
+    		margin:1%;
+    		padding:0;
+	}
 	/* Editable anpassen */
 	.editable {
 		border: none !important;
@@ -109,14 +109,14 @@ width:100px !important;
 		background-color: rgba(205, 195, 183, 0.75);
 	}
 	#contentData> tr:nth-child(even) {
-    	background: #f1f1f1;
+    		background: #f1f1f1;
 	}
 	
 	</style>
     </head>
     <body>
     	<div class="demoPage">
-    <h1 demoHeaders>Moviedatabase</h1>
+    		<h1 demoHeaders>Moviedatabase</h1>
 		<table id="MovieTable" class="ui-widget ui-helper-clearfix">
 			<thead class="ui-state-default ui-corner-all" >
 				<tr id="sortButtons">
@@ -150,15 +150,24 @@ width:100px !important;
 			</tbody>
 		</table>
 		<div id="dialog-invalid-input" title="Invalid Input">
-  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Please provide for each input field a value.</p>
-</div>
-<div id="dialog-already-exist" title="Movie already exists">
-  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>A movie with this title and year alredy exists.</p>
-</div>
-<div id="dialog-eidtable-not-saved" title="Unsaved Data">
-  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Your changes will be lost after this action.</p>
-  	
-</div>
+			<p>
+				<span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+				Please provide for each input field a value.
+			</p>
+		</div>
+		<div id="dialog-already-exist" title="Movie already exists">
+		<p>
+			<span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+			A movie with this title and year alredy exists.
+		</p>
+		</div>
+		<div id="dialog-eidtable-not-saved" title="Unsaved Data">
+			<p>
+				<span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+				Your changes will be lost after this action.
+			</p>
+
+		</div>
 	</div>
         <script src="external/jquery/jquery.js"></script>
         <script src="jquery-ui.js"></script>
