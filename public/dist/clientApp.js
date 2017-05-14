@@ -127,7 +127,7 @@
           title: 'le movies',
           director: 'derpington',
           fsk: '18',
-          runtime: '2011-2015'
+          runtime: '500 min'
         });
       } else {
         this.collection = JSON.parse(temp);

@@ -105,7 +105,7 @@ Example for ? operator.
             temp=localStorage[@storageName]
             if not temp?
                 @collection=[]
-                @newMovie {year:2018,title:'le movies',director:'derpington',fsk:'18',runtime:'2011-2015'}
+                @newMovie {year:2018,title:'le movies',director:'derpington',fsk:'18',runtime:'500 min'}
              else 
                 @collection=JSON.parse temp
             callback?()
