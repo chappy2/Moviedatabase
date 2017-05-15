@@ -52,8 +52,8 @@ localhost:5001
 ## Cake Befehle:
 In der Präsentation wurde Cakefile und Sourcemaps vorgestellt. Hier nochmals eine Übersicht über die implementierten Befehle:
 ```
-cake --map build
-cake --map watch
+cake build
+cake watch
 cake docs
 cake test
 cake clean
@@ -68,6 +68,7 @@ Kleine Anmerkungen zu Sourcemaps:
  - probleme in firefox 53.0.2 (in chrome funktioniert alles)
  - sourcemap angaben passen nicht zum webserver (files liegen in public ordner)
  - coffeescript Option -M (inline sourcemaps) ging nicht
+ - seit Sonntag 14.05.2017 (neu installation der nodejs packages) geht auch die Option -m nicht. Die Beispiel Dateien (.map) passen nicht zu den neu kompilierten JavaScript Dateien und haben keinen gültigen Link zur Sourcemap (Normalerweise am Ende einer JavaScript Datei, wenn Sourcemaps mit generiert werden). Die funktionieren momentan nicht. Sind nur noch als Beispiel drin, als Beispiel, wie eine Sourcemap generell aussehen.
 
 ## Dokumentation
 Zwei Beispiele zur Dokumentation: [docco](https://jashkenas.github.io/docco/) und literate Programming (CoffeeScript).
